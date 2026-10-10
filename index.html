@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2026.3">
   
   <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -55,8 +55,8 @@
       <div class="capsule-actions">
 
         <!-- CTA Principal Pilule Exact Screenshot -->
-        <a href="#commande" class="btn-capsule-cta btn-magnetic">
-          <span>Démarrer mon projet</span>
+        <a href="#commande" class="btn-capsule-cta btn-magnetic" style="background:#FF6A00 !important; color:#0E0E10 !important; border:1px solid #FF6A00 !important; font-weight:700 !important;">
+          <span style="color:#0E0E10 !important; font-weight:700 !important;">Démarrer mon projet</span>
         </a>
 
         <!-- Mobile Menu Toggle Button -->
@@ -165,8 +165,7 @@
       </section>
 
 
-            <div id="projets" style="position:relative;top:-90px;" aria-hidden="true"></div>
-<section id="projects" class="pg">
+<section id="projets" class="pg">
   <header class="pg-head">
     <div class="section-tag-pill font-mono">
       <span class="tag-index text-orange">02</span>
@@ -634,7 +633,7 @@
     <!-- ==============================================
          SECTION 05: TARIFS (STYLE ÉDITORIAL STREAMLINÉ - SCREENSHOT CLIENT)
          ============================================== -->
-    <section class="section-pricing-editorial" id="tarifs">
+    <section class="section-pricing-editorial" id="tarifs" data-reveal>
       <div class="pricing-editorial-container">
         
         <!-- Colonne Gauche : Titre Fort & Sous-titre Contraste -->
@@ -677,7 +676,7 @@
           <div class="pricing-editorial-action">
             <a href="#commande" class="btn-pricing-pill-cta btn-magnetic">
               <span>Demander un devis</span>
-              <span class="btn-arrow-bubble"><i class="fa-solid fa-arrow-right"></i></span>
+              <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
         </div>
@@ -705,7 +704,7 @@
 
         <!-- Avis WhatsApp 1 -->
         <article class="whatsapp-review-card">
-          <div class="wa-preview-thumb-wrap" onclick="window.open('assets/images/reviews/review-whatsapp-1.jpg', '_blank')">
+          <div class="wa-preview-thumb-wrap wa-review-clickable" data-review-src="assets/images/reviews/review-whatsapp-1.jpg" role="button" tabindex="0" aria-label="Agrandir l'avis client 1">
             <img src="assets/images/reviews/review-whatsapp-1.jpg" alt="Capture WhatsApp Avis Client 1" class="wa-preview-thumb" loading="lazy">
             <div class="wa-zoom-overlay">
               <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -716,7 +715,7 @@
 
         <!-- Avis WhatsApp 2 -->
         <article class="whatsapp-review-card">
-          <div class="wa-preview-thumb-wrap" onclick="window.open('assets/images/reviews/review-whatsapp-2.jpg', '_blank')">
+          <div class="wa-preview-thumb-wrap wa-review-clickable" data-review-src="assets/images/reviews/review-whatsapp-2.jpg" role="button" tabindex="0" aria-label="Agrandir l'avis client 2">
             <img src="assets/images/reviews/review-whatsapp-2.jpg" alt="Capture WhatsApp Facture Acquittée" class="wa-preview-thumb" loading="lazy">
             <div class="wa-zoom-overlay">
               <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -727,7 +726,7 @@
 
         <!-- Avis WhatsApp 3 -->
         <article class="whatsapp-review-card">
-          <div class="wa-preview-thumb-wrap" onclick="window.open('assets/images/reviews/review-whatsapp-3.jpg', '_blank')">
+          <div class="wa-preview-thumb-wrap wa-review-clickable" data-review-src="assets/images/reviews/review-whatsapp-3.jpg" role="button" tabindex="0" aria-label="Agrandir l'avis client 3">
             <img src="assets/images/reviews/review-whatsapp-3.jpg" alt="Capture WhatsApp Qualité Master" class="wa-preview-thumb" loading="lazy">
             <div class="wa-zoom-overlay">
               <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -738,7 +737,7 @@
 
         <!-- Avis WhatsApp 4 -->
         <article class="whatsapp-review-card">
-          <div class="wa-preview-thumb-wrap" onclick="window.open('assets/images/reviews/review-whatsapp-4.jpg', '_blank')">
+          <div class="wa-preview-thumb-wrap wa-review-clickable" data-review-src="assets/images/reviews/review-whatsapp-4.jpg" role="button" tabindex="0" aria-label="Agrandir l'avis client 4">
             <img src="assets/images/reviews/review-whatsapp-4.jpg" alt="Capture WhatsApp Validation V1" class="wa-preview-thumb" loading="lazy">
             <div class="wa-zoom-overlay">
               <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -773,10 +772,10 @@
           <div class="sticky-help-box">
             <span class="help-box-tag font-mono text-orange">● QUESTION TECHNIQUE ?</span>
             <p class="help-box-text">Besoin d'un cadrage spécifique à vos rushs ou votre flux de production ?</p>
-            <a href="https://wa.me/33615254792" target="_blank" rel="noopener noreferrer" class="btn-sticky-wa">
-              <i class="fa-brands fa-whatsapp text-orange"></i>
-              <span>Échanger sur WhatsApp</span>
-              <i class="fa-solid fa-arrow-right"></i>
+            <a href="https://wa.me/33615254792" target="_blank" rel="noopener noreferrer" class="btn-sticky-wa" style="border:1px solid #FF6A00 !important; color:#FF6A00 !important; background:rgba(255,106,0,0.12) !important;">
+              <i class="fa-brands fa-whatsapp" style="color:#FF6A00 !important;"></i>
+              <span style="color:#FF6A00 !important;">Échanger sur WhatsApp</span>
+              <i class="fa-solid fa-arrow-right" style="color:#FF6A00 !important;"></i>
             </a>
           </div>
         </div>
@@ -788,7 +787,7 @@
             <div class="faq-clean-item open">
               <button type="button" class="faq-clean-header" aria-expanded="true">
                 <span class="faq-clean-q">Quels sont les délais habituels de livraison pour un montage ?</span>
-                <span class="faq-clean-toggle"><i class="fa-solid fa-minus faq-toggle-fa"></i></span>
+                <span class="faq-clean-toggle"><i class="fa-solid fa-plus faq-toggle-fa"></i></span>
               </button>
               <div class="faq-clean-body">
                 <p>Pour un <strong>Short, Reel ou TikTok (9:16)</strong> : livraison garantie en <strong>24 à 48 heures</strong>. Pour une <strong>vidéo YouTube longue (8 à 15 min)</strong> : <strong>3 à 5 jours ouvrés</strong>. Pour une publicité de marque ou un clip musical complexe : 5 à 7 jours. Un mode sprint express 24h est disponible pour les urgences éditoriales.</p>
@@ -1094,8 +1093,14 @@
        ASSISTANT IA INTÉGRÉ ("CUT-BOT") — BOUTON FLOTTANT UNIQUE
        ============================================== -->
   <div class="ai-launcher-wrapper" id="aiLauncherWrap">
+    <div class="ai-speech-bubble-tip" id="aiBubbleTip">
+      <span>Besoin d'un devis ou d'un conseil ?</span>
+      <button type="button" class="btn-tip-close" id="btnTipClose" aria-label="Fermer le tooltip">×</button>
+    </div>
     <button type="button" class="btn-ai-floating" id="btnAiToggle" aria-label="Ouvrir l'assistant IA">
-      <i class="fa-solid fa-robot"></i>
+      <span class="ai-btn-icon"><i class="fa-solid fa-robot"></i></span>
+      <span class="ai-btn-label">Cut-Bot IA</span>
+      <span class="ai-live-pulse" aria-hidden="true"></span>
     </button>
   </div>
 
@@ -1118,16 +1123,21 @@
       </div>
     </div>
 
+    <!-- Réponses rapides suggérées -->
+    <div class="ai-quick-chips-bar" id="aiQuickChips">
+      <button type="button" class="ai-chip-pill" data-prompt="Quels sont tes tarifs et formules de montage ?">💰 Tarifs</button>
+      <button type="button" class="ai-chip-pill" data-prompt="Quels sont les délais habituels de livraison ?">⚡ Délais</button>
+      <button type="button" class="ai-chip-pill" data-prompt="Qui est Imran Tel et avec qui travaille-t-il ?">🎬 Qui est Imran ?</button>
+      <button type="button" class="ai-chip-pill" data-prompt="Comment te contacter directement par WhatsApp ou email ?">📞 Contact</button>
+    </div>
+
     <!-- Corps des messages -->
     <div class="ai-chat-body" id="aiChatBody"></div>
-
-    <!-- Réponses rapides suggérées -->
-    
 
     <!-- Zone de saisie manuelle -->
     <div class="ai-chat-input-area">
       <form id="aiChatForm" class="ai-input-form">
-        <input type="text" id="aiUserInput" placeholder="Posez une question ou répondez..." class="ai-input-field" autocomplete="off">
+        <input type="text" id="aiUserInput" placeholder="Posez une question sur vos rushs ou votre projet..." class="ai-input-field" autocomplete="off">
         <button type="submit" class="btn-ai-send" aria-label="Envoyer le message">
           <i class="fa-solid fa-paper-plane"></i>
         </button>
@@ -1173,13 +1183,26 @@
     </div>
   </div>
 
+  <!-- ==============================================
+       MODAL LIGHTBOX AVIS CLIENT AVEC BOUTON DE CROIX
+       ============================================== -->
+  <div class="review-lightbox-modal hidden" id="reviewModal" role="dialog" aria-modal="true" aria-label="Avis client en grand">
+    <div class="review-modal-backdrop" id="reviewModalBackdrop"></div>
+    <div class="review-modal-box">
+      <button type="button" class="btn-review-modal-close" id="btnReviewModalClose" aria-label="Fermer la vue de l'avis">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img src="" alt="Capture avis client" class="review-modal-image" id="reviewModalImg">
+    </div>
+  </div>
+
   <!-- Toast notification global -->
   <div class="global-toast hidden" id="globalToast">Notification</div>
 
   <!-- Scripts -->
-  <script src="js/main.js"></script>
-  <script src="js/before-after.js"></script>
-  <script src="js/scrubber.js"></script>
-  <script src="js/ai-assistant.js"></script>
+  <script src="js/main.js?v=2026.3"></script>
+  <script src="js/before-after.js?v=2026.3"></script>
+  <script src="js/scrubber.js?v=2026.3"></script>
+  <script src="js/ai-assistant.js?v=2026.3"></script>
 </body>
 </html>

@@ -903,11 +903,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-      openProjectModal(card.dataset.id);
+  const projectCards = document.querySelectorAll('.project-card');
+  if (projectCards && projectCards.length > 0) {
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => {
+        openProjectModal(card.dataset.id);
+      });
     });
-  });
+  }
 
   document.querySelectorAll('.curved-item').forEach(item => {
     item.addEventListener('click', () => {
@@ -944,58 +947,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // =========================================================================
-  // 09. FAQ ACCORDION (CLEAN MINIMALIST EXACT SCREENSHOT)
+  // =========================================================================
+  // 09. FAQ ACCORDION (100% FONCTIONNEL & INDÉPENDANT)
   // =========================================================================
   const faqCleanItems = document.querySelectorAll('.faq-clean-item');
   faqCleanItems.forEach(item => {
     const btn = item.querySelector('.faq-clean-header');
-    const toggleIcon = item.querySelector('.faq-clean-toggle');
     if (btn) {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        sfx.clickCut();
+        item.classList.toggle('open');
         const isOpen = item.classList.contains('open');
-        sfx.clickCut();
-        
-        // Fermer les autres questions
-        faqCleanItems.forEach(other => {
-          if (other !== item) {
-            other.classList.remove('open');
-            const otherHeader = other.querySelector('.faq-clean-header');
-            const otherIcon = other.querySelector('.faq-clean-toggle');
-            if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
-            if (otherIcon) otherIcon.textContent = '+';
-          }
-        });
-
-        // Basculer l'état de la question actuelle
-        if (isOpen) {
-          item.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-          if (toggleIcon) toggleIcon.textContent = '+';
-        } else {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-          if (toggleIcon) toggleIcon.textContent = '−';
-        }
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
     }
   });
 
-  // Support pour accordéon générique éventuel
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const btn = item.querySelector('.faq-question');
-    if (btn) {
-      btn.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        sfx.clickCut();
-        faqItems.forEach(i => i.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
-      });
+  // =========================================================================
+  // 09.B MODAL LIGHTBOX AVIS CLIENTS (AVEC CROIX DE FERMETURE)
+  // =========================================================================
+  const reviewModal = document.getElementById('reviewModal');
+  const reviewModalImg = document.getElementById('reviewModalImg');
+  const btnReviewModalClose = document.getElementById('btnReviewModalClose');
+  const reviewModalBackdrop = document.getElementById('reviewModalBackdrop');
+
+  function openReviewModal(imgSrc) {
+    if (!reviewModal || !reviewModalImg) return;
+    reviewModalImg.src = imgSrc;
+    reviewModal.classList.remove('hidden');
+    sfx.clickCut();
+  }
+
+  function closeReviewModal() {
+    if (!reviewModal) return;
+    reviewModal.classList.add('hidden');
+    if (reviewModalImg) reviewModalImg.src = '';
+    sfx.clickCut();
+  }
+
+  document.querySelectorAll('.wa-review-clickable').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const src = item.dataset.reviewSrc || item.querySelector('img')?.src;
+      if (src) openReviewModal(src);
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const src = item.dataset.reviewSrc || item.querySelector('img')?.src;
+        if (src) openReviewModal(src);
+      }
+    });
+  });
+
+  if (btnReviewModalClose) btnReviewModalClose.addEventListener('click', closeReviewModal);
+  if (reviewModalBackdrop) reviewModalBackdrop.addEventListener('click', closeReviewModal);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && reviewModal && !reviewModal.classList.contains('hidden')) {
+      closeReviewModal();
     }
   });
 
-  // Capsule Header scroll detection & Mobile drawer toggle
+  // =========================================================================
+  // 09.C NAVIGATION RÉELLE & 100% FONCTIONNELLE
+  // =========================================================================
   const siteHeaderCapsule = document.getElementById('siteHeader');
+  const btnMobileNav = document.getElementById('btnMobileNav');
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+
+  // Capsule Header scroll detection
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
       siteHeaderCapsule?.classList.add('scrolled');
@@ -1004,8 +1025,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  const btnMobileNav = document.getElementById('btnMobileNav');
-  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+  // Mobile drawer toggle
   if (btnMobileNav && mobileNavDrawer) {
     btnMobileNav.addEventListener('click', () => {
       mobileNavDrawer.classList.toggle('hidden');
@@ -1013,14 +1033,57 @@ document.addEventListener('DOMContentLoaded', () => {
       btnMobileNav.setAttribute('aria-expanded', isExpanded);
       sfx.clickCut();
     });
-
-    mobileNavDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNavDrawer.classList.add('hidden');
-        btnMobileNav.setAttribute('aria-expanded', 'false');
-      });
-    });
   }
+
+  // Smooth click scroll pour TOUS les liens d'ancrage du site
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      
+      const targetEl = document.querySelector(targetId) || document.getElementById(targetId.substring(1));
+      if (targetEl) {
+        e.preventDefault();
+        sfx.clickCut();
+        
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // Ferme le menu mobile si ouvert
+        if (mobileNavDrawer && !mobileNavDrawer.classList.contains('hidden')) {
+          mobileNavDrawer.classList.add('hidden');
+          btnMobileNav?.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+  });
+
+  // ScrollSpy dynamique : surbrillance du lien actif dans la barre de navigation
+  const navSectionEls = document.querySelectorAll('section[id], section#projets');
+  const navLinkEls = document.querySelectorAll('.capsule-nav-links .capsule-link');
+
+  window.addEventListener('scroll', () => {
+    let currentId = '';
+    const scrollPos = window.scrollY + 140;
+
+    navSectionEls.forEach(sec => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentId = sec.id;
+      }
+    });
+
+    if (currentId) {
+      navLinkEls.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === `#${currentId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }, { passive: true });
 
   // Interactive 4-step 'Comment ça marche ?' Rail Progress on Hover & Scroll
   const howStepNodes = document.querySelectorAll('.how-step-node');

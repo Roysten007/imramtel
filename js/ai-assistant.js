@@ -22,57 +22,50 @@ document.addEventListener('DOMContentLoaded', () => {
   // LLM Conversation History
   const conversationHistory = [];
 
-  // Proactive Balloon handlers
-  const aiProactiveBalloon = document.getElementById('aiProactiveBalloon');
-  const btnBalloonClose = document.getElementById('btnBalloonClose');
-  const balloonChips = document.querySelectorAll('.b-chip-btn');
+  // Speech Bubble Tip & Suggestion Chips Handlers
+  const aiBubbleTip = document.getElementById('aiBubbleTip');
+  const btnTipClose = document.getElementById('btnTipClose');
+  const quickChips = document.querySelectorAll('.ai-chip-pill');
 
-  function hideBalloon() {
-    if (aiProactiveBalloon) {
-      aiProactiveBalloon.classList.add('hidden');
+  function hideBubbleTip() {
+    if (aiBubbleTip) {
+      aiBubbleTip.style.opacity = '0';
+      aiBubbleTip.style.pointerEvents = 'none';
       setTimeout(() => {
-        if (aiProactiveBalloon) aiProactiveBalloon.style.display = 'none';
+        if (aiBubbleTip) aiBubbleTip.style.display = 'none';
       }, 300);
     }
   }
 
-  function openChatWithContext(preset) {
-    playClick();
-    hideBalloon();
-    aiChatWindow.classList.remove('hidden');
-    if (aiChatBody.children.length === 0) {
-      startConversation();
-    }
-    if (preset) {
-      setTimeout(() => {
-        if (preset === 'shorts') askRealAi("Comment gères-tu les montages de Shorts et Reels viraux ?");
-        else if (preset === 'youtube') askRealAi("Comment optimises-tu la rétention sur les formats longs YouTube ?");
-        else if (preset === 'tarifs') askRealAi("Quels sont tes tarifs et formules de montage ?");
-      }, 300);
-    }
-    setTimeout(() => aiUserInput && aiUserInput.focus(), 300);
-  }
-
-  if (btnBalloonClose) {
-    btnBalloonClose.addEventListener('click', (e) => {
+  if (btnTipClose) {
+    btnTipClose.addEventListener('click', (e) => {
       e.stopPropagation();
       playClick();
-      hideBalloon();
+      hideBubbleTip();
     });
   }
 
-  balloonChips.forEach(chip => {
+  if (aiBubbleTip) {
+    aiBubbleTip.addEventListener('click', () => {
+      playClick();
+      hideBubbleTip();
+      aiChatWindow.classList.remove('hidden');
+      if (aiChatBody.children.length === 0) startConversation();
+      setTimeout(() => aiUserInput && aiUserInput.focus(), 300);
+    });
+  }
+
+  // Quick Chips Inside Chat Window
+  quickChips.forEach(chip => {
     chip.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openChatWithContext(chip.dataset.preset);
+      e.preventDefault();
+      playClick();
+      const prompt = chip.dataset.prompt || chip.textContent.trim();
+      if (prompt) {
+        askRealAi(prompt);
+      }
     });
   });
-
-  if (aiProactiveBalloon) {
-    aiProactiveBalloon.addEventListener('click', () => {
-      openChatWithContext();
-    });
-  }
 
   // Toggle Chat Window
   btnAiToggle.addEventListener('click', () => {

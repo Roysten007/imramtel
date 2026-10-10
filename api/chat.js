@@ -39,12 +39,20 @@ module.exports = async function handler(req, res) {
     return res.status(204).end();
   }
 
+  if (req.method === 'GET') {
+    return res.status(200).json({ status: 'ok', name: 'Cut-Bot AI // Assistant Imran Tel' });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Méthode non autorisée. Utilisez POST.' });
   }
 
   try {
-    const userMessages = req.body?.messages || [];
+    let body = req.body || {};
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch(e) {}
+    }
+    const userMessages = body.messages || [];
     if (!Array.isArray(userMessages) || userMessages.length === 0) {
       return res.status(400).json({ error: 'Format invalide : le tableau "messages" est requis.' });
     }
