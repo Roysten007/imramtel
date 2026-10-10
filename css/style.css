@@ -453,6 +453,29 @@ a, button, input[type="submit"], [role="button"], .btn-magnetic {
   }
 }
 
+@media (max-width: 959px) {
+  .site-header-capsule {
+    top: 14px;
+    padding: 0 16px;
+  }
+  .capsule-nav-container {
+    height: 52px;
+    padding: 0 12px 0 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9);
+  }
+  .capsule-logo-text {
+    font-size: 18px;
+  }
+  .btn-capsule-cta {
+    display: none !important;
+  }
+  .btn-capsule-mobile {
+    width: 36px;
+    height: 36px;
+    padding: 7px;
+  }
+}
+
 .hamburger-line {
   width: 100%;
   height: 2px;
@@ -2124,11 +2147,80 @@ section {
   letter-spacing: 0.5px;
 }
 
+/* Flèches et connecteurs du Processus (Desktop & Mobile) */
+.how-step-arrow-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 22px auto 0;
+  gap: 6px;
+}
+
+.how-step-arrow-flow .flow-line {
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(to bottom, rgba(255, 106, 0, 0.7), rgba(255, 106, 0, 0.2));
+  border-radius: 2px;
+}
+
+.how-step-arrow-flow .flow-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #111114;
+  border: 1.5px solid #FF6A00;
+  color: #FF6A00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 16px rgba(255, 106, 0, 0.45);
+  animation: pulseStepFlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseStepFlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 12px rgba(255, 106, 0, 0.35);
+  }
+  50% {
+    transform: translateY(3px);
+    box-shadow: 0 0 22px rgba(255, 106, 0, 0.7);
+  }
+}
+
+@media (min-width: 993px) {
+  .how-step-arrow-flow {
+    display: none;
+  }
+  .how-step-node:not(:last-child) .how-node-top::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -36px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #101014;
+    border: 1px solid rgba(255, 106, 0, 0.45);
+    color: #FF6A00;
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 14px rgba(255, 106, 0, 0.35);
+    z-index: 10;
+  }
+}
+
 /* Responsive pour 'Comment ça marche ?' */
 @media (max-width: 992px) {
   .how-steps-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 24px;
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
   .how-rail-line {
     display: none;
@@ -2138,7 +2230,7 @@ section {
 @media (max-width: 600px) {
   .how-steps-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
   }
   .how-step-desc {
     max-width: 280px;
@@ -5039,11 +5131,13 @@ section {
 }
 
 .pourquoi-title {
-  font-size: clamp(34px, 5vw, 54px);
+  font-size: clamp(26px, 5vw, 54px);
   font-weight: 800;
   color: #FFF;
   margin: 16px 0 12px;
   letter-spacing: -0.02em;
+  line-height: 1.15;
+  word-break: normal;
 }
 
 .pourquoi-desc {
