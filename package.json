@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Portfolio Officiel d'Imran Tel - Monteur Vidéo YouTube & Rétention",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "build": "echo 'Build OK'"
+    "dev": "node server.js"
   },
   "keywords": [
     "portfolio",

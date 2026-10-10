@@ -4301,26 +4301,12 @@ section {
 /* ==========================================================================
    SCROLL REVEAL ANIMATIONS (DYNAMIC & SMOOTH)
    ========================================================================== */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-[data-reveal="left"] {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-
-[data-reveal="right"] {
-  opacity: 0;
-  transform: translateX(40px);
-}
-
+[data-reveal],
+[data-reveal="left"],
+[data-reveal="right"],
 [data-reveal="scale"] {
-  opacity: 0;
-  transform: scale(0.95) translateY(20px);
+  opacity: 1;
+  transform: none;
 }
 
 [data-reveal].is-revealed {
@@ -5343,6 +5329,10 @@ section {
   padding: 120px 24px;
   background: #000000;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  scroll-margin-top: 100px;
 }
 
 .pricing-editorial-container {
@@ -5444,31 +5434,40 @@ section {
   font-weight: 700;
 }
 
-.btn-pricing-pill-cta:hover {
-  transform: translateY(-2px) scale(1.02);
-  background: #FF8533 !important;
-  box-shadow: 0 12px 38px rgba(255, 106, 0, 0.65);
+.pricing-btn-icon-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0E0E10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  transition: transform 0.25s ease;
+}
+
+.pricing-btn-icon-circle i {
+  color: #FF6A00 !important;
+  font-size: 13px;
+}
+
+.btn-pricing-pill-cta:hover .pricing-btn-icon-circle {
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
    SCROLL REVEAL ANIMATIONS (DYNAMIC & SMOOTH)
    ========================================================================== */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(32px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
 [data-reveal].is-revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
-
-[data-reveal][data-delay="1"] { transition-delay: 0.1s; }
-[data-reveal][data-delay="2"] { transition-delay: 0.22s; }
-[data-reveal][data-delay="3"] { transition-delay: 0.34s; }
-[data-reveal][data-delay="4"] { transition-delay: 0.46s; }
 
 /* Subtle pulse for roadmap arrow polygon */
 .pourquoi-curve-svg polygon {
@@ -5583,43 +5582,40 @@ section {
 }
 
 .btn-ai-floating {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #FF6A00 0%, #D45500 100%);
-  color: #0E0E10;
-  border: none;
-  padding: 14px 22px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 14px;
-  cursor: pointer;
-  box-shadow: 0 12px 35px rgba(255, 106, 0, 0.4);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: fixed !important;
+  bottom: 28px !important;
+  right: 28px !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: #FF6A00 !important;
+  color: #0E0E10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9990 !important;
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 106, 0, 0.45) !important;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease !important;
 }
 
 .btn-ai-floating:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 16px 42px rgba(255, 106, 0, 0.55);
+  transform: translateY(-4px) scale(1.08) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 106, 0, 0.65) !important;
 }
 
-.ai-live-pulse {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #00FF88;
-  box-shadow: 0 0 8px #00FF88;
-  animation: livePing 1.8s infinite;
+.btn-ai-floating i {
+  font-size: 24px !important;
+  color: #0E0E10 !important;
 }
 
-@keyframes livePing {
-  0% { transform: scale(1); opacity: 1; }
-  70% { transform: scale(2.2); opacity: 0; }
-  100% { transform: scale(1); opacity: 0; }
+.ai-speech-bubble-tip,
+.ai-btn-label,
+.ai-live-pulse,
+.ai-launcher-wrapper .ai-speech-bubble-tip {
+  display: none !important;
 }
 
 .ai-chat-window {

@@ -145,6 +145,13 @@ const server = http.createServer((req, res) => {
 
   let parsedUrl = req.url.split('?')[0];
 
+  // --- API Endpoint: GET /api/chat ---
+  if (req.method === 'GET' && parsedUrl === '/api/chat') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: 'ok', name: 'Cut-Bot AI // Assistant Imran Tel' }));
+    return;
+  }
+
   // --- API Endpoint: POST /api/chat ---
   if (req.method === 'POST' && parsedUrl === '/api/chat') {
     let body = '';

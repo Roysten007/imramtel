@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Toggle Chat Window
   btnAiToggle.addEventListener('click', () => {
     playClick();
-    hideBalloon();
+    if (typeof hideBubbleTip === 'function') hideBubbleTip();
     const isHidden = aiChatWindow.classList.contains('hidden');
     if (isHidden) {
       aiChatWindow.classList.remove('hidden');

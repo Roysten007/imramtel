@@ -633,7 +633,7 @@
     <!-- ==============================================
          SECTION 05: TARIFS (STYLE ÉDITORIAL STREAMLINÉ - SCREENSHOT CLIENT)
          ============================================== -->
-    <section class="section-pricing-editorial" id="tarifs" data-reveal>
+    <section class="section-pricing-editorial" id="tarifs">
       <div class="pricing-editorial-container">
         
         <!-- Colonne Gauche : Titre Fort & Sous-titre Contraste -->
@@ -676,7 +676,7 @@
           <div class="pricing-editorial-action">
             <a href="#commande" class="btn-pricing-pill-cta btn-magnetic">
               <span>Demander un devis</span>
-              <i class="fa-solid fa-arrow-right"></i>
+              <span class="pricing-btn-icon-circle"><i class="fa-solid fa-arrow-right"></i></span>
             </a>
           </div>
         </div>
@@ -1090,19 +1090,11 @@
 
 
   <!-- ==============================================
-       ASSISTANT IA INTÉGRÉ ("CUT-BOT") — BOUTON FLOTTANT UNIQUE
+       ASSISTANT IA INTÉGRÉ ("CUT-BOT") — BOUTON FLOTTANT ICONE SEULE
        ============================================== -->
-  <div class="ai-launcher-wrapper" id="aiLauncherWrap">
-    <div class="ai-speech-bubble-tip" id="aiBubbleTip">
-      <span>Besoin d'un devis ou d'un conseil ?</span>
-      <button type="button" class="btn-tip-close" id="btnTipClose" aria-label="Fermer le tooltip">×</button>
-    </div>
-    <button type="button" class="btn-ai-floating" id="btnAiToggle" aria-label="Ouvrir l'assistant IA">
-      <span class="ai-btn-icon"><i class="fa-solid fa-robot"></i></span>
-      <span class="ai-btn-label">Cut-Bot IA</span>
-      <span class="ai-live-pulse" aria-hidden="true"></span>
-    </button>
-  </div>
+  <button type="button" class="btn-ai-floating" id="btnAiToggle" aria-label="Ouvrir l'assistant IA">
+    <i class="fa-solid fa-robot"></i>
+  </button>
 
   <!-- Fenêtre de chat Assistant IA -->
   <div class="ai-chat-window hidden" id="aiChatWindow" role="dialog" aria-labelledby="aiChatTitle">
